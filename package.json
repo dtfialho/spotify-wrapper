@@ -1,0 +1,63 @@
+{
+  "name": "js-tdd-course",
+  "version": "1.0.0",
+  "description": "Nossa biblioteca do curso de JS com TDD na prática.",
+  "main": "src/index.js",
+  "scripts": {
+    "clear": "rimraf lib",
+    "build": "./node_modules/.bin/babel --out-dir lib src",
+    "b": "npm run clear && npm run build",
+    "build:watch": "npm run clear && npm run build -- --watch",
+    "build:umd": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.js",
+    "build:umd:min": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.min.js -p",
+    "build:all": "npm run b && npm run build:umd && npm run build:umd:min",
+    "prepush": "npm run lint && npm run test:coverage",
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
+    "test:tdd": "npm test -- --watch",
+    "test:coverage": "nyc npm test",
+    "lint": "./node_modules/.bin/eslint src/*.js"
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dtfialho/js-tdd-course.git"
+  },
+  "keywords": [
+    "js",
+    "tdd",
+    "library"
+  ],
+  "author": "Diego T. Fialho <diego.tfialho@gmail.com> (http://www.diegotfialho.com.br/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dtfialho/js-tdd-course/issues"
+  },
+  "homepage": "https://github.com/dtfialho/js-tdd-course#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.1",
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
+    "husky": "^0.14.3",
+    "mocha": "^3.5.0",
+    "node-fetch": "^1.7.2",
+    "nyc": "^11.1.0",
+    "rimraf": "^2.6.1",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0",
+    "sinon-stub-promise": "^4.0.0",
+    "webpack": "^3.5.5"
+  }
+}
