@@ -16,7 +16,7 @@
     "test:tdd": "npm test -- --watch",
     "test:coverage": "nyc npm test",
     "lint": "./node_modules/.bin/eslint src/*.js",
-    "coveralls": "npm run test:coverage && nyc report --reporter-text-lcov | coveralls"
+    "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {
     "reporter": [
