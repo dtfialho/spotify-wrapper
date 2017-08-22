@@ -13,14 +13,11 @@
     const albumsEl = document.getElementById('albums');
 
     albums.then(data => {
-      if(albums.items) {
-        markup = data.albums.items.map(item =>
-          `<img src='${item.image[0].url}' alt='${item.name}'>`
-        ).join('');
+      markup = data.albums.items.map(item =>
+        `<img src='${item.images[0].url}' alt='${item.name}'>`
+      ).join('');
 
-        albumsEl.innerHTML = markup;
-      }
-
+      albumsEl.innerHTML = markup;
     })
   </script>
 </body>
